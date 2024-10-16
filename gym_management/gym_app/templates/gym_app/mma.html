@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Coach Of MMA:</h5>
+            <hr>
+            <p>Name: {{coach.first_name}} {{coach.last_name}}</p>
+            <p>Phone: {{coach.phone}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total Members:</h5>
+            <hr>
+            <h1 style="text-align: center;padding: 10px"> {{total_members}} </h1>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>MEMBERS: </h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Number Phone</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+
+                {% for member in members %}
+                <tr>
+                    <td>{{member.id}}</td>
+                    <td>{{member.first_name}}</td>
+                    <td>{{member.last_name}}</td>
+                    <td>{{member.age}}</td>
+                    <td>{{member.number_phone}}</td>
+                    <td>{{member.start_at}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary " href="{% url 'detail' member.id %}">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

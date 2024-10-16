@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+<style>
+    #total-members {
+        background-color: #4cb4c7;
+    }
+
+
+    #orders-delivered {
+        background-color: #7abecc;
+    }
+
+    #orders-pending {
+        background-color: #7CD1C0;
+    }
+</style>
+
+{% block content %}
+<div class="text-center">
+    <div class="row">
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" style="background-color: #4cb4c7;">
+                    <div class="card-header">
+                        <h5 class="card-title">Total Members</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{total_members}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" style="background-color: #7abecc;">
+                    <div class="card-header">
+                        <h5 class="card-title">Male</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{total_male}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" style="background-color: #7CD1C0;">
+                    <div class="card-header">
+                        <h5 class="card-title">Female</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{total_female}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>COACHS:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_coach' %}">Add Coach</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Full Name</th>
+                        <th>Number phone</th>
+                        <th>Coach of</th>
+                    </tr>
+
+                    {% for coach in coachs %}
+                    <tr>
+                        <td><a href="#" class="btn btn-sm btn-info">View</a></td>
+                        <td>{{coach.first_name}} {{coach.last_name}}</td>
+                        <td>{{coach.phone}}</td>
+                        <td>{{coach.coach_of}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5>LAST 5 MEMEBERS: </h5>
+            <hr>
+            <div class="card card-body">
+                <a href="{% url 'create_member' %}" class="btn btn-primary btn-sm btn block">Create Memeber</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th>First name</th>
+                        <th>First name</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th></th>
+                    </tr>
+
+                    {% for member in last_5_members %}
+                    <tr>
+                        <td>{{member.first_name}}</td>
+                        <td>{{member.last_name}}</td>
+                        <td>{{member.start_at}}</td>
+                        <td>{{member.category_sport}}</td>
+                        <td><a href="{% url 'detail' member.id %}" class="btn btn-sm btn-info">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

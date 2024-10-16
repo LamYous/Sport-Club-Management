@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>COACHS: </h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Sport</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for coach in coachs %}
+                <tr>
+                    <td>{{coach.id}}</td>
+                    <td>{{coach.first_name}}</td>
+                    <td>{{coach.last_name}}</td>
+                    <td>{{coach.phone}}</td>
+                    <td>{{coach.coach_of}}</td>
+                    <td>{{coach.start_at}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary " href="{% url 'update_coach' coach.id %}">Edit</a>
+                        <a class="btn btn-sm btn-danger " href="{% url 'delete_coach' coach.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

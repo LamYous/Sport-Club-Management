@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cart" style="padding-left: 100px; padding-top: 80px;">
+    <h1 class="text-center">{{member.first_name|capfirst}} {{member.last_name}}</h1>
+    <hr style="border: 1px solid black; margin: 20px 50px;">
+
+    <h3 style="margin-left: 50px;">
+        <p><strong>ID: </strong> {{member.id}} </p>
+        <p><strong>Full Name: </strong> {{member.first_name|capfirst}} {{member.last_name}} </p>
+        <p><strong>Age: </strong> {{member.age}} </p>
+        <p><strong>Gender: </strong> {{member.gender}} </p>
+        <p><strong>Number phone: </strong> {{member.number_phone}} </p>
+        <p><strong>Sport: </strong> {{member.category_sport}} </p>
+        <p><strong>Date: </strong> {{member.start_at}} </p>
+    </h3>
+
+    <br>
+    <div class="text-center">
+        <a href="{% url 'update_member' member.id %}" class="btn btn-outline-primary">Update Member</a>
+        <a href="{% url 'delete' member.id %}" class="btn btn-outline-danger">Remove Member</a>
+    </div>
+</div>
+
+{% endblock %}

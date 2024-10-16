@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <br><br><br>
+    <h2>My Clube</h2>
+    <br>
+    <hr style="border: 1px solid black; margin: 30px 180px;">
+
+    {% if user.is_authenticated %}
+    <a class="btn btn-outline-primary" href="{% url 'dashboard' %}">My Dashboard</a>
+    {% else %}
+    <a class="btn btn-outline-primary" href="{% url 'login' %}">Log In</a>
+    {% endif %}
+</div>
+
+{% endblock %}

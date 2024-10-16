@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <p>Are you sure you want to delete <strong>'{{item.first_name}} {{item.first_name}}'</strong>?</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-success" name="Yes">
+                    <a href="{% url 'dashboard' %}" class="btn btn-warning">No</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
