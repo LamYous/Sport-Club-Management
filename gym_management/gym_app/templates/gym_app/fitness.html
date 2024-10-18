@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md">
         <div class="card card-body">
-            <h5>Coach Of Fitness:</h5>
+            <h5 class="text-center">Coach Of Fitness:</h5>
             <hr>
             <p>Name: {{coach.first_name}} {{coach.last_name}}</p>
             <p>Phone: {{coach.phone}}</p>
@@ -17,7 +17,7 @@
 
     <div class="col-md">
         <div class="card card-body">
-            <h5>Total Members:</h5>
+            <h5 class="text-center">Total Members:</h5>
             <hr>
             <h1 style="text-align: center;padding: 10px"> {{total_members}} </h1>
         </div>
@@ -46,30 +46,33 @@
         </div>
         <div class="card card-body">
             <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                    <th>Number Phone</th>
-                    <th>Date</th>
-                    <th></th>
-                </tr>
+                <thead class="thead-dark text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Number Phone</th>
+                        <th>Date</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
 
-                {% for member in members %}
-                <tr>
-                    <td>{{member.id}}</td>
-                    <td>{{member.first_name}}</td>
-                    <td>{{member.last_name}}</td>
-                    <td>{{member.age}}</td>
-                    <td>{{member.number_phone}}</td>
-                    <td>{{member.start_at}}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary " href="{% url 'detail' member.id %}">View</a>
-                    </td>
-                </tr>
-                {% endfor %}
-
+                <tbody class="text-center">
+                    {% for member in members %}
+                    <tr>
+                        <td>{{member.id}}</td>
+                        <td>{{member.first_name}}</td>
+                        <td>{{member.last_name}}</td>
+                        <td>{{member.age}}</td>
+                        <td>{{member.number_phone}}</td>
+                        <td>{{member.start_at}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary " href="{% url 'detail' member.id %}">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>

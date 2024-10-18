@@ -36,7 +36,7 @@ def log_out(request):
 @login_required(login_url='login')
 def dashboard(request):
     members = Member.objects.all()
-    coachs = Coach.objects.all()
+    coachs = Coach.objects.filter(is_active=True)
 
     total_members = members.count()
     total_male = members.filter(gender="Male").count()
