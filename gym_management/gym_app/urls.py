@@ -19,6 +19,8 @@ urlpatterns = [
     path('update_coach/<int:coach_id>/', views.update_coach, name="update_coach"),
     path('delete_coach/<int:coach_id>/', views.delete_coach, name="delete_coach"),
 
+    path('search_memeber/', views.search_member, name='search'),
+
     path('login/', views.login_page, name='login'),
     path('logout/', views.log_out, name='logout')
 ]

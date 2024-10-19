@@ -15,3 +15,7 @@ class CoachForm(forms.ModelForm):
     class Meta:
         model = Coach
         fields = '__all__'
+
+class MemberSearchForm(forms.Form):
+    first_name = forms.CharField(required=False, max_length=100)
+    last_name = forms.CharField(required=False, max_length=100)
