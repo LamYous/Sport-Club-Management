@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import LoginForm, MemberForm, CoachForm
+from .forms import LoginForm, MemberForm, CoachForm, MemberSearchForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Member, Coach
+from django.db.models import Q
 
 # Create your views here.
 
@@ -198,3 +199,16 @@ def delete_coach(request, coach_id):
         return redirect('dashboard')
     
     return render(request, 'gym_app/delete.html', {'item':coach})
+
+@login_required(login_url='login')
+def search_member(request):
+    query = request.GET.get('query', '')
+    result = Member.objects.none() # Start with no result  
+
+    if query:
+            result = Member.objects.filter(
+                Q(first_name__icontains=query) or
+                Q(last_name__icontains=query)
+            )
+
+    return render(request, 'gym_app/search_result.html', {'result':result})
