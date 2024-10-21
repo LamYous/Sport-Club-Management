@@ -11,7 +11,11 @@ A web application built with Django that allows for the management of sports clu
   - **Read**: View details of coaches and members.
   - **Update**: Modify existing information for coaches and members.
   - **Delete**: Remove coaches and members from the system.
-- **Member Statistics**: Get the total number of members in the club.
+- **Member Statistics**:
+  - Get the total number of members in the club.
+  - Count members by gender (male and female).
+  - Search for members.
+- **View Active Coaches**: Display a list of currently active coaches.
 
 ## Technologies Used
 
